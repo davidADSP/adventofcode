@@ -21,7 +21,7 @@ for row in data:
     if ' no other bags.' in contents:
         bags[suitcase] = {}
     else:
-        regex = lambda x: re.search(r'(\d*) ?(.+) bags?', x.strip())
+        regex = lambda x: re.search(r'(\d+) ?(.+) bags?', x.strip())
         bags[suitcase] = dict([(regex(x).group(2), int(regex(x).group(1))) for x in contents])
 
 print(n_inside('shiny gold'))
