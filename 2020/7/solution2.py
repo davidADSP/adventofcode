@@ -13,18 +13,15 @@ data = open("input.txt", "r").read().splitlines()
 bags = {}
 total = 0
 for row in data:
-    bag, contains_str = row.split(' contain')
-    bag = re.search(r'(.+) bags', bag).group(1)
-
-    contains = contains_str.split(', ')
+    suitcase, contents = row.split(' contain')
+    suitcase = re.search(r'(.+) bags', suitcase).group(1)
+    contents = contents.split(', ')
     
     #create 'bags' as a dict of dicts e.g. bags = {'shiny gold': {'dull pink': 3, ... }, ...}
-    if ' no other bags.' in contains:
-        bags[bag] = {}
+    if ' no other bags.' in contents:
+        bags[suitcase] = {}
     else:
-        regex = re.search(r'(\d*) ?(.+) bags?', x.strip())
-        count_bags = [int(regex.group(1)) for x in contains]
-        hold_bags = [regex.group(2) for x in contains]
-        bags[bag] = dict(zip(hold_bags, count_bags))
+        regex = lambda x: re.search(r'(\d*) ?(.+) bags?', x.strip())
+        bags[suitcase] = dict([(regex(x).group(2), int(regex(x).group(1))) for x in contents])
 
 print(n_inside('shiny gold'))
