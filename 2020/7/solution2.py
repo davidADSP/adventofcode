@@ -3,10 +3,10 @@ import re
 
 #funcs
 def n_inside(suitcase):
-    counts = []
+    total = 0
     for colour, count in bags[suitcase].items():
-        counts.append(count * (1 + n_inside(colour)))
-    return sum(counts)
+        total += count * (1 + n_inside(colour))
+    return total
 
 #script
 data = open("input.txt", "r").read().splitlines()
