@@ -42,7 +42,6 @@ for idx, row in enumerate(data):
         new_word = 'nop' if command == 'jmp' else 'jmp'
         new_data = edit_data(data.copy(), idx, f'{new_word} {val}')
         acc, terminate = check(new_data)
-
         if terminate:
             print(acc)
             break
