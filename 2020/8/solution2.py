@@ -39,11 +39,8 @@ data = open("input.txt", "r").read().splitlines()
 for idx, row in enumerate(data):
     command, val = row.split(' ')
     if command in ('jmp', 'nop'):
-        if command == 'jmp':
-            new_data = edit_data(data.copy(), idx, f'nop {val}')
-        elif command == 'nop':
-            new_data = edit_data(data.copy(), idx, f'jmp {val}')
-
+        new_word = 'nop' if command == 'jmp' else 'jmp'
+        new_data = edit_data(data.copy(), idx, f'{new_word} {val}')
         acc, terminate = check(new_data)
 
         if terminate:
