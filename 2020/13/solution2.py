@@ -11,7 +11,7 @@ bigM = np.prod(buses)
 
 for m, a in zip(buses, remainders):
     # Chinese Remainder Theorem 
-    # This bad boy is a solution to a system of modular equations x = a mod(m) where the m's are coprime
+    # This bad boy is a solution to a system of r modular equations x = a mod(m) where the m's are coprime
     # n = a1M1y1 + a2M2y2 + · · · + arMryr.
     M = int(bigM // m)
     y = pow(M % m, -1, m)
