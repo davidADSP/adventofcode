@@ -18,7 +18,6 @@ while next(iterator, None) is not None:
 
 #Play Bingo
 answer = None
-total_boards = len(boards)
 complete_boards = 0
 for num in numbers:
     for board in boards:
@@ -27,7 +26,7 @@ for num in numbers:
             if board.complete():
                 complete_boards += 1
                 board.done = True
-                if complete_boards == total_boards:
+                if complete_boards == len(boards):
                     answer = board.unmarked_sum() * num
                     print(answer)
                     exit()
