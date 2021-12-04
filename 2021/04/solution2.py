@@ -17,7 +17,6 @@ while next(iterator, None) is not None:
     boards.append(Board(lines))
 
 #Play Bingo
-answer = None
 complete_boards = 0
 for num in numbers:
     for board in boards:
