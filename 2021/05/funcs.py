@@ -12,9 +12,7 @@ def parse_row(row, all_lines):
         y_direction = np.sign(y2-y1)
 
         l = max(abs(x2-x1), abs(y2-y1)) + 1
-
-        for i in range(l):
-            hits.append((x1 + i * x_direction, y1 + i * y_direction))
+        hits = [(x1 + i * x_direction, y1 + i * y_direction) for i in range(l)]
     
     return hits
 
