@@ -1,20 +1,12 @@
 from funcs import parse_row
+from collections import Counter
 
 data = open("input.txt", "r").read().splitlines()
-coords = {}
+coords = Counter()
 
 for row in data:
-
-    hits = parse_row(row, all_lines = False)
-    for h in hits:
-        if h in coords:
-            coords[h] += 1
-        else:
-            coords[h] = 1
-
-answer = 0
-for h,v in coords.items():
-    if v > 1:
-        answer += 1
-
+    hits = parse_row(row, include_diagonals = False)
+    coords.update(hits)
+        
+answer = sum(v > 1 for v in coords.values())
 print(answer)
